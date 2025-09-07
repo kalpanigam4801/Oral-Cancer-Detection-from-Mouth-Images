@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Oral Cancer Detection using Deep Learning</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/img/favicon.png" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/css/style3.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Restaurantly - v3.0.1
+  * Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+ 
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-cente">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="col-lg-8"><a href="index.html"> <span>Oral Cancer Detection using Deep Learning</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="{{ url_for('first')}}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('login')}}">Login</a></li>
+		    
+           
+		  
+                   
+                  <li><a href="{{ url_for('index')}}">Test</a></li>
+                  
+             
+                  <li><a href="{{ url_for('chart')}}">Accuracy</a></li>
+				                     
+                </ul>
+              </li>
+		 
+           
+           </ul>
+          
+       
+     </nav>
+     
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+        <div class="col-lg-8">
+       <h1><span>Oral Cancer Detection using Deep Learning</span></h1>
+
+          
+        </div>
+        
+
+      </div>
+    </div>
+  </section> 
+
+ 
+
+    
+
+
+
+
+
+    <div class="container dataContent " style="padding:0; margin:0; height:100vh;">
+
+        <div class="row" style="height:100vh;">
+            <!-- <div class="col" style="height: 100px; width: 100px ;">
+                <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.zhdk.ch%2Ffile%2Flive%2F4c%2F4cff72d7c48d45da2d9eeaed59a8c5f501a6e358%2Flarge.jpg&tbnid=XrKIcpU4kxHR6M&vet=12ahUKEwj40amjvOqAAxXhxqACHby6AYMQMygPegQIARBv..i&imgrefurl=https%3A%2F%2Fwww.zhdk.ch%2Fen%2Fresearchproject%2Ftofi--tongue-fitness-570990&docid=UIdHaAAIUx5F-M&w=1280&h=958&q=tongue%20collage&ved=2ahUKEwj40amjvOqAAxXhxqACHby6AYMQMygPegQIARBv"
+                    alt="image" style="height: 100px; width: 100px ;">
+
+
+            </div> -->
+            <div class="col" style="padding:0;">
+                <img src="{{url_for('static', filename='image.jpg')}}" alt="image" style="height: 100%; width: 100% ; opacity:0.9;">
+            </div>
+            <div class="col">
+                <div class="headingText text-center">
+                    <h1 class="headingText">TongueDiseaseNet</h1>
+
+                </div>
+                <p class="des" style="padding: 20px; margin: 30px;">TongueDiseaseNet is an innovative and advanced deep-learning project that aims to revolutionize the diagnosis of various tongue diseases using tongue images. Leveraging the power of machine learning and artificial intelligence, this project
+                    offers a reliable and efficient tool to detect and identify oral lichens, leukaemia, hairy tongue, oral cancer, and oral thrush.</p>
+                <h4 style="padding: 30px; margin: 30px;">UPLOAD IMAGE:</h4>
+
+                <form style="padding: 30px; margin: 30px;" class="p-3 text-center" action="/index" , method="post" enctype="multipart/form-data">
+                    <input class="form-control" type="file" name="imagefile" id="file" onchange="loadFile(event)">
+                    <p><img id="output" width="200" /></p><br/>
+                    <input class="btn submitButton" type="submit" value="Predict">
+                </form>
+                <script>
+                    var loadFile = function(event) {
+                        var image = document.getElementById('output');
+                        image.src = URL.createObjectURL(event.target.files[0]);
+                    };
+                </script>
+
+                {% if prediction %}
+                <h3 style="padding: 20px; margin: 30px;" class="text-center"> Detected prediction:</h3>
+                <p style="padding: 20px; margin: 30px;" class="text-center"> {{prediction}}</p>
+
+                <h3 style="padding: 20px; margin: 30px;" class="text-center">Result Confidence:</h3>
+                <p style="padding: 20px; margin: 30px;" class="text-center">{{confidence}}</p>
+
+                <p style="padding: 20px; margin: 30px;"> {{description}}</p>
+
+                <h3 style="padding: 20px; margin: 30px;" class="text-center">Symptoms:</h3>
+                <ul style="padding: 20px; margin: 30px;" id="symptoms">
+                </ul>
+                <script>
+                    var data = JSON.parse('{{symptoms | tojson | safe}}');
+
+                    console.log(data);
+                    console.log(data.length);
+                    let list_s = document.getElementById("symptoms");
+                    for (i = 0; i < data.length; ++i) {
+                        let li = document.createElement('li');
+                        li.innerText = data[i];
+                        list_s.appendChild(li);
+                    }
+                </script>
+
+                <h3 style="padding: 20px; margin: 30px;" class="text-center">Causes:</h3>
+                <ul style="padding: 20px; margin: 30px;" id="causes">
+                </ul>
+                <script>
+                    var data = JSON.parse('{{causes | tojson | safe}}');
+
+                    console.log(data);
+                    console.log(data.length);
+                    let list = document.getElementById("causes");
+                    for (i = 0; i < data.length; ++i) {
+                        let li = document.createElement('li');
+                        li.innerText = data[i];
+                        list.appendChild(li);
+                    }
+                </script>
+
+                <h3 style="padding: 20px; margin: 30px;" class="text-center">Treatments:</h3>
+                <ul style="padding: 20px; margin: 30px;" id="treatment">
+                </ul>
+                <script>
+                    var data = JSON.parse('{{treatment | tojson | safe}}');
+
+                    console.log(data);
+                    console.log(data.length);
+                    let list_t = document.getElementById("treatment");
+                    for (i = 0; i < data.length; ++i) {
+                        let li = document.createElement('li');
+                        li.innerText = data[i];
+                        list_t.appendChild(li);
+                    }
+                </script>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    {% endif %}
+</body>
+
+</html>
